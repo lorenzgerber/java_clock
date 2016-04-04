@@ -58,8 +58,20 @@ public class Alarm extends Clock {
 
     private boolean checkAlarm(){
 
-        return true;
+        if(this.alarmHours.getValue() == this.getHours() &&
+                this.alarmMinutes.getValue() == this.getMinutes()){
+            return true;
+
+        } else {
+            return false;
+        }
     }
+    
+    private void updateDisplay(){
+
+    }
+
+
 
 
 

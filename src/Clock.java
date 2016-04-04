@@ -23,6 +23,14 @@ public class Clock {
 
     }
 
+    protected int getHours(){
+        return this.hours.getValue();
+    }
+
+    protected int getMinutes(){
+        return this.minutes.getValue();
+    }
+
     public void timeTick(){
 
         this.minutes.increment();
