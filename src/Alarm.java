@@ -66,8 +66,30 @@ public class Alarm extends Clock {
             return false;
         }
     }
-    
+
     private void updateDisplay(){
+
+        StringBuilder displayAssembly = new StringBuilder();
+
+        if(this.getHours()<10){
+            displayAssembly.append("0");
+        }
+
+        displayAssembly.append(String.valueOf(this.getHours()));
+
+        displayAssembly.append(":");
+
+        if(this.getMinutes()<10){
+            displayAssembly.append("0");
+        }
+
+        if(this.checkAlarm()){
+            displayAssembly.append(" ALARM !!");
+        }
+
+        displayAssembly.append(String.valueOf(this.getMinutes()));
+
+
 
     }
 

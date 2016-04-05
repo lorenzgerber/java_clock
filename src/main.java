@@ -5,10 +5,13 @@ public class main {
 
     public static void main( String[] args ){
 
-        Clock myClock;
-        myClock = new Clock();
+        Alarm myClock;
+        myClock = new Alarm();
 
         System.out.println(myClock.getTime());
+
+        myClock.alarmSet(10,52);
+        myClock.alarmOn();
 
         for(int iii = 1; iii < 2000; iii++){
             myClock.timeTick();
@@ -18,6 +21,7 @@ public class main {
 
         myClock.setTime(45,12);
         System.out.println(myClock.getTime());
+
 
 
     }
