@@ -10,12 +10,14 @@ public class main {
 
         System.out.println(myClock.getTime());
 
+        myClock.setTime(10,52);
         myClock.alarmSet(10,52);
-        myClock.alarmOn();
+
 
         for(int iii = 1; iii < 2000; iii++){
             myClock.timeTick();
         }
+
 
         System.out.println(myClock.getTime());
 
