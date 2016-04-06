@@ -15,8 +15,13 @@ public class NumberDisplay {
     private int maxLimit;
     private int value;
 
-    public NumberDisplay(int minLimit, int maxLimit){
+    public NumberDisplay(int minLimit, int maxLimit)
+    throws IllegalArgumentException
+    {
 
+        if (minLimit >= maxLimit ){
+            throw new IllegalArgumentException("minLimit has to be smaller than maxLimit");
+        }
         this.minLimit = minLimit;
         this.maxLimit = maxLimit;
 

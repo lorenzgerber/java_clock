@@ -27,6 +27,7 @@ public class Clock {
         this.hours = new NumberDisplay(0,23);
         this.minutes = new NumberDisplay(0,59);
 
+
     }
 
 
@@ -37,11 +38,21 @@ public class Clock {
      * @param hours
      * @param minutes
      */
-    public Clock(int hours, int minutes){
+    public Clock(int hours, int minutes)
+    throws IllegalArgumentException
+    {
         this.hours = new NumberDisplay(0,23);
         this.minutes = new NumberDisplay(0, 59);
 
+        if(hours > 23 || hours < 0){
+            throw new IllegalArgumentException("hour arg out of range");
+        }
         this.hours.setValue(hours);
+
+        if(minutes > 59 || minutes < 0){
+            throw new IllegalArgumentException("minutes arg out of range");
+        }
+
         this.minutes.setValue(minutes);
 
     }
@@ -57,8 +68,6 @@ public class Clock {
         if(this.minutes.didWrapAround()){
             this.hours.increment();
         }
-
-
     }
 
     /**
