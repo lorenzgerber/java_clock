@@ -7,19 +7,33 @@
  */
 
 
-
-public class NumberDisplay {
+/**
+ * A Class that simulates a single digit number Display
+ * it can be incremented unit wise and it will flip back to
+ * it's lowest range when incremented on it's maximum range
+ * value
+ */
+public class NumberDisplay
+{
 
 
     private int minLimit;
     private int maxLimit;
     private int value;
 
+    /**
+     * Constructor for Number Display
+     *
+     * @param minLimit Upper limit of NumberDisplay value range
+     * @param maxLimit Lower limit of NumberDisplay value range
+     * @throws IllegalArgumentException
+     */
     public NumberDisplay(int minLimit, int maxLimit)
     throws IllegalArgumentException
     {
 
-        if (minLimit >= maxLimit ){
+        if (minLimit >= maxLimit )
+        {
             throw new IllegalArgumentException("minLimit has to be smaller than maxLimit");
         }
         this.minLimit = minLimit;
@@ -30,21 +44,44 @@ public class NumberDisplay {
 
     }
 
-    public int getValue(){
+    /**
+     * getter / accessor method
+     * to access the value of the NumberDisplay
+     * @return
+     */
+    public int getValue()
+    {
 
         return this.value;
     }
 
-    public void setValue(int newValue){
+    /**
+     * setter / modifier method
+     * to write new value of the NumberDisplay
+     * @param newValue
+     */
+    public void setValue(int newValue)
+    {
         this.value = newValue;
     }
 
-    public String getDisplayValue(){
+    /**
+     * Get the NumberDisplay value as String
+     * @return value
+     */
+    public String getDisplayValue()
+    {
         return String.valueOf(this.value);
     }
 
-    public void increment(){
-        if(this.value + 1 < this.maxLimit){
+    /**
+     * Method to increment NumberDisplay
+     * increment is one step
+     */
+    public void increment()
+    {
+        if(this.value + 1 < this.maxLimit)
+        {
             this.value++;
         } else {
             this.value = this.minLimit;
@@ -52,14 +89,19 @@ public class NumberDisplay {
 
     }
 
-    public boolean didWrapAround(){
+    /**
+     * Method that produces boolean true when
+     * invoked after a wrap around
+     * @return boolean
+     */
+    public boolean didWrapAround()
+    {
 
-        if(this.value == this.minLimit){
+        if(this.value == this.minLimit)
+        {
             return true;
         } else {
             return false;
         }
     }
-
-
 }

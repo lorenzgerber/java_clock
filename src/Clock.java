@@ -7,10 +7,11 @@
  */
 
 /**
- * A class to implement a digital clock with each a number display
- * for hours and minutes.
+ * A class to implement a digital clock with one numberDisplay
+ * class object for hours and one for minutes.
  */
-public class Clock {
+public class Clock
+{
 
     protected NumberDisplay hours;
     protected NumberDisplay minutes;
@@ -22,21 +23,21 @@ public class Clock {
      * Number displays are initiated
      * to 0-23 for hours and 0-59 for minutes ranges.
      */
-    public Clock(){
+    public Clock()
+    {
 
         this.hours = new NumberDisplay(0,23);
         this.minutes = new NumberDisplay(0,59);
-
 
     }
 
 
     /**
-     *
      * Constructor for Clock class
      *
      * @param hours
      * @param minutes
+     * @throws IllegalArgumentException
      */
     public Clock(int hours, int minutes)
     throws IllegalArgumentException
@@ -44,12 +45,14 @@ public class Clock {
         this.hours = new NumberDisplay(0,23);
         this.minutes = new NumberDisplay(0, 59);
 
-        if(hours > 23 || hours < 0){
+        if(hours > 23 || hours < 0)
+        {
             throw new IllegalArgumentException("hour arg out of range");
         }
         this.hours.setValue(hours);
 
-        if(minutes > 59 || minutes < 0){
+        if(minutes > 59 || minutes < 0)
+        {
             throw new IllegalArgumentException("minutes arg out of range");
         }
 
@@ -62,10 +65,13 @@ public class Clock {
      * method to advance the time by one minute
      *
      */
-    public void timeTick(){
+    public void timeTick()
+    {
 
         this.minutes.increment();
-        if(this.minutes.didWrapAround()){
+
+        if(this.minutes.didWrapAround())
+        {
             this.hours.increment();
         }
     }
@@ -75,9 +81,22 @@ public class Clock {
      *
      * @param hours
      * @param minutes
+     * @throws IllegalArgumentException
      */
-    public void setTime(int hours, int minutes){
+    public void setTime(int hours, int minutes)
+    throws IllegalArgumentException
+    {
+
+        if(hours > 23 || hours < 0)
+        {
+            throw new IllegalArgumentException("arg alarmHours out of range");
+        }
         this.hours.setValue(hours);
+
+        if(hours > 23 || hours < 0)
+        {
+            throw new IllegalArgumentException("arg alarmHours out of range");
+        }
         this.minutes.setValue(minutes);
 
     }
@@ -87,19 +106,23 @@ public class Clock {
      *
      * @return String
      */
-    public String getTime(){
+    public String getTime()
+    {
         this.updateDisplay();
         return this.displayString;
     }
 
     /**
      * method to update the displayString attribute
+     * only for internal use
      */
-    private void updateDisplay(){
+    private void updateDisplay()
+    {
 
         StringBuilder displayAssembly = new StringBuilder();
         
-        if(this.hours.getValue()<10){
+        if(this.hours.getValue()<10)
+        {
             displayAssembly.append("0");
         }
 
@@ -107,7 +130,8 @@ public class Clock {
 
         displayAssembly.append(":");
 
-        if(this.minutes.getValue()<10){
+        if(this.minutes.getValue()<10)
+        {
             displayAssembly.append("0");
         }
 
@@ -116,7 +140,6 @@ public class Clock {
         this.displayString = displayAssembly.toString();
 
     }
-
 
 
 }
