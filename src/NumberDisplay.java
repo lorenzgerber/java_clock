@@ -60,9 +60,15 @@ public class NumberDisplay
      * to write new value of the NumberDisplay
      * @param newValue
      */
-    public void setValue(int newValue)
+    public void setValue(int newValue) throws IllegalArgumentException
     {
+        if(newValue < this.minLimit)
+            throw new IllegalArgumentException("entered value is too low");
+        if(newValue > this.maxLimit)
+            throw new IllegalArgumentException("entered value is too high");
+
         this.value = newValue;
+
     }
 
     /**
@@ -71,7 +77,16 @@ public class NumberDisplay
      */
     public String getDisplayValue()
     {
-        return String.valueOf(this.value);
+        StringBuilder displayAssembly = new StringBuilder();
+
+        if(this.value<10)
+        {
+            displayAssembly.append("0");
+        }
+
+        displayAssembly.append(String.valueOf(this.value));
+
+        return displayAssembly.toString();
     }
 
     /**
